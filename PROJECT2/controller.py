@@ -22,6 +22,7 @@ class Controller(QMainWindow, Ui_MainWindow):
 
     def playLow(self):
         self.balanceCounter.setText(f'test {self.balance}')
+        self.errorLabel.setText('Choose High or Low\nLow (1-5) High (6-10)')
         number = randint(1, 10)
         self.cardNumberTop.setText(f'{number}')
         self.cardNumberMiddle.setText(f'{number}')
@@ -42,6 +43,7 @@ class Controller(QMainWindow, Ui_MainWindow):
 
     def playHigh(self):
         self.balanceCounter.setText(f'{self.balance}')
+        self.errorLabel.setText('Choose High or Low\nLow (1-5) High (6-10)')
         number = randint(1, 10)
         self.cardNumberTop.setText(f'{number}')
         self.cardNumberMiddle.setText(f'{number}')
