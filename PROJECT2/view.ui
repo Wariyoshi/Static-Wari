@@ -163,7 +163,10 @@
      </rect>
     </property>
     <property name="autoFillBackground">
-     <bool>true</bool>
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(211, 211, 211);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -236,6 +239,9 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
+    <zorder>cardNumberMiddle</zorder>
+    <zorder>cardNumberTop</zorder>
+    <zorder>cardNumberBottom</zorder>
    </widget>
    <widget class="QPushButton" name="resetButton">
     <property name="geometry">
@@ -261,9 +267,9 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>420</y>
+      <y>400</y>
       <width>261</width>
-      <height>31</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
