@@ -7,7 +7,6 @@ QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 
 class Controller(QMainWindow, Ui_MainWindow):
-    balance = int(100)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -19,44 +18,50 @@ class Controller(QMainWindow, Ui_MainWindow):
         self.LowButton.clicked.connect(lambda: self.playLow())
         self.HighButton.clicked.connect(lambda: self.playHigh())
         self.resetButton.clicked.connect(lambda: self.reset())
+        self.balance = int(100)
 
-    def playLow(self, balance):
-        # balance = int(100)
-        self.balanceCounter.setText(f'test {balance}')
+    def playLow(self):
+        self.balanceCounter.setText(f'test {self.balance}')
         number = randint(1, 10)
-        if self.LowButton.clicked:
-            if number > 5:
-                self.winOrLoseLabel.setText(f'Sorry, you guessed wrong!\nThe number was {number}')
-                balance = balance - 10
-                self.balanceCounter.setText(f'{balance}')
-                if balance < 1:
-                    self.errorLabel.setText('You have a balance of 0\nClick reset to play again')
-            if number < 6:
-                self.winOrLoseLabel.setText('Congratulations, you won!\nClick High or Low to play again')
-                balance = balance + 10
-                self.balanceCounter.setText(f'{balance}')
-                if balance < 1:
-                    self.errorLabel.setText('You have a balance of 0\nClick reset to play again')
+        self.cardNumberTop.setText(f'{number}')
+        self.cardNumberMiddle.setText(f'{number}')
+        self.cardNumberBottom.setText(f'{number}')
+        # while self.balance > int(0):  # Look back at this!
+        if number > 5:
+            self.winOrLoseLabel.setText(f'Sorry, you guessed wrong!\nThe number was {number}')
+            self.balance = self.balance - 10
+            self.balanceCounter.setText(f'{self.balance}')
+            if self.balance < 1:
+                self.errorLabel.setText('You have a balance of 0\nClick reset to play again')
+        if number < 6:
+            self.winOrLoseLabel.setText('Congratulations, you won!\nClick High or Low to play again')
+            self.balance = self.balance + 10
+            self.balanceCounter.setText(f'{self.balance}')
+            if self.balance < 1:
+                self.errorLabel.setText('You have a balance of 0\nClick reset to play again')
 
-    def playHigh(self, balance):
-        # balance = int(100)
-        self.balanceCounter.setText(f'{balance}')
+    def playHigh(self):
+        self.balanceCounter.setText(f'{self.balance}')
         number = randint(1, 10)
+        self.cardNumberTop.setText(f'{number}')
+        self.cardNumberMiddle.setText(f'{number}')
+        self.cardNumberBottom.setText(f'{number}')
         if number > 5:
             self.winOrLoseLabel.setText('Congratulations, you won!\nClick High or Low to play again')
-            balance = balance + 10
-            self.balanceCounter.setText(f'{balance}')
-            if balance < 1:
+            self.balance = self.balance + 10
+            self.balanceCounter.setText(f'{self.balance}')
+            if self.balance < 1:
                 self.errorLabel.setText('You have a balance of 0\nClick reset to play again')
         if number < 6:
             self.winOrLoseLabel.setText(f'Sorry, you guessed wrong!\nThe number was {number}')
-            balance = balance - 10
-            self.balanceCounter.setText(f'{balance}')
-            if balance < 1:
+            self.balance = self.balance - 10
+            self.balanceCounter.setText(f'{self.balance}')
+            if self.balance < 1:
                 self.errorLabel.setText('You have a balance of 0\nClick reset to play again')
 
-    def reset(self, balance):
-        if balance == int(0):
-            balance == int(100)
+    def reset(self):
+        if self.balance == int(0):
+            self.balance = self.balance + 100
+            self.balanceCounter.setText(f'{self.balance}')
         else:
             self.errorLabel.setText('Balance must be zero before you can reset.')
