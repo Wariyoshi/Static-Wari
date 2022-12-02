@@ -20,9 +20,11 @@ class Controller(QMainWindow, Ui_MainWindow):
         self.HighButton.clicked.connect(lambda: self.playGame())
 
     def playGame(self):
-        balance = 100
-        while balance != 0:
+        balance = int(100)
+        self.balanceCounter.setText(f'{balance}')
+        while balance > 0:
             number = randint(1, 10)
             if self.LowButton.clicked:
                 if number > 5:
                     self.winOrLoseLabel.setText('Congratulations, you won!\nClick High or Low to play again')
+                    balance = balance + 10
