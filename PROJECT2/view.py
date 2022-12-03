@@ -47,7 +47,7 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.balanceCounter.setFont(font)
-        self.balanceCounter.setStyleSheet("color: rgb(255, 0, 0);")
+        self.balanceCounter.setStyleSheet("color: rgb(255, 255, 255);")
         self.balanceCounter.setText("")
         self.balanceCounter.setAlignment(QtCore.Qt.AlignCenter)
         self.balanceCounter.setObjectName("balanceCounter")
